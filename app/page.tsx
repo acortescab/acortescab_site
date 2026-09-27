@@ -102,12 +102,6 @@ export default function Home() {
           <a href="#contact" className="transition hover:text-white">Contact</a>
         </nav>
 
-        <a
-          href="/Profile.pdf"
-          className="rounded-full border border-orange-400/50 bg-orange-500/10 px-4 py-2 text-sm font-medium text-orange-200 transition hover:border-orange-300 hover:bg-orange-500/20"
-        >
-          View profile
-        </a>
       </header>
 
       <section id="top" className="relative z-10 mx-auto max-w-7xl px-6 pb-12 pt-10 lg:px-10 lg:pb-20 lg:pt-16">
