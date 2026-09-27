@@ -80,6 +80,8 @@ const portfolioHighlights = [
   },
 ];
 
+import DigitalTwinChat from "./components/digital-twin-chat";
+
 export default function Home() {
   return (
     <main className="min-h-screen overflow-hidden bg-[#070b12] text-zinc-100">
@@ -281,6 +283,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <DigitalTwinChat />
 
       <section id="contact" className="relative z-10 mx-auto max-w-7xl px-6 pb-20 pt-8 lg:px-10">
         <div className="rounded-[2rem] border border-white/10 bg-gradient-to-r from-orange-500/12 via-white/[0.03] to-blue-500/12 p-6 md:p-8">
