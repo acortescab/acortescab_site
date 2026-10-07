@@ -144,6 +144,7 @@ export default function DigitalTwinChat() {
                 value={input}
                 onChange={(event) => setInput(event.target.value)}
                 rows={3}
+                maxLength={500}
                 placeholder="Ask about his experience, skills, leadership, or projects..."
                 className="min-h-[88px] flex-1 resize-none rounded-xl border border-white/10 bg-white/[0.02] px-3 py-2 text-sm text-white placeholder:text-zinc-500 focus:border-violet-400/60 focus:outline-none"
               />
