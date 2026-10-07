@@ -65,22 +65,13 @@ const initiatives = [
   },
 ];
 
-const portfolioHighlights = [
-  {
-    title: "Platform systems",
-    text: "Scalable APIs, cloud architecture, and internal tools that unlock product velocity.",
-  },
-  {
-    title: "Game delivery",
-    text: "Cross-platform launches built with technical discipline, stakeholder alignment, and execution clarity.",
-  },
-  {
-    title: "Technical leadership",
-    text: "Decision-making that balances roadmap reality, engineering standards, and delivery objectives.",
-  },
-];
+const shippedPlatforms = ["Steam", "Epic Games", "PS5", "PS4", "Xbox Series", "Xbox One", "iOS", "Android"];
+const githubUrl = "https://github.com/acortescab";
 
+import Image from "next/image";
+import Link from "next/link";
 import DigitalTwinChat from "./components/digital-twin-chat";
+import { gameImage, games } from "./data/games";
 
 export default function Home() {
   return (
@@ -127,6 +118,14 @@ export default function Home() {
                 className="rounded-full bg-white px-6 py-3 text-sm font-medium text-slate-900 transition hover:bg-zinc-200"
               >
                 LinkedIn
+              </a>
+              <a
+                href={githubUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-medium text-zinc-100 transition hover:border-white/30 hover:bg-white/10"
+              >
+                GitHub
               </a>
               <a
                 href="#journey"
@@ -250,29 +249,67 @@ export default function Home() {
           Portfolio
         </div>
 
+        <h2 className="mb-8 max-w-2xl text-3xl font-semibold tracking-[-0.05em] text-white md:text-4xl">
+          Games I’ve shipped.
+        </h2>
+
         <div className="mb-10 grid gap-5 md:grid-cols-3">
-          {portfolioHighlights.map((item) => (
-            <div key={item.title} className="rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-5">
-              <div className="mb-4 h-10 w-10 rounded-xl bg-gradient-to-br from-orange-400/30 to-blue-500/30" />
-              <h3 className="text-xl font-semibold text-white">{item.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-zinc-300">{item.text}</p>
-            </div>
-          ))}
+          {games.map((game) => {
+            const image = gameImage(game.slug);
+            return (
+              <Link
+                key={game.slug}
+                href={`/games/${game.slug}`}
+                className="group flex flex-col overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.03] transition hover:-translate-y-1 hover:border-white/25"
+              >
+                <div className={`relative flex h-44 items-end bg-gradient-to-br ${game.accent} p-5`}>
+                  {image && (
+                    <>
+                      <Image
+                        src={image}
+                        alt={game.title}
+                        fill
+                        sizes="(min-width: 768px) 33vw, 100vw"
+                        className="object-cover transition duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#070b12]/80 via-transparent to-transparent" />
+                    </>
+                  )}
+                  <h3 className="relative text-2xl font-semibold tracking-[-0.03em] text-white">{game.title}</h3>
+                </div>
+                <div className="flex flex-1 flex-col p-5">
+                  <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-zinc-400">
+                    {game.period} • {game.role}
+                  </p>
+                  <p className="mt-3 flex-1 text-sm leading-7 text-zinc-300">{game.summary}</p>
+                  <span className="mt-5 text-sm font-medium text-orange-300 transition group-hover:text-orange-200">
+                    View game →
+                  </span>
+                </div>
+              </Link>
+            );
+          })}
         </div>
 
-        <div className="rounded-[2rem] border border-dashed border-white/15 bg-gradient-to-br from-white/[0.04] to-transparent p-7 md:p-10">
+        <p className="mb-10 text-sm leading-7 text-zinc-400">
+          Projects delivered across {shippedPlatforms.join(", ")} using Unity Engine and C#.
+        </p>
+
+        <div className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-white/[0.04] to-transparent p-7 md:p-10">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="text-xs font-medium uppercase tracking-[0.26em] text-zinc-400">Future work</p>
-              <h3 className="mt-2 text-3xl font-semibold tracking-[-0.05em] text-white">Portfolio cases coming soon.</h3>
+              <p className="text-xs font-medium uppercase tracking-[0.26em] text-zinc-400">Open work</p>
+              <h3 className="mt-2 text-3xl font-semibold tracking-[-0.05em] text-white">
+                More of what I’m building lives on GitHub.
+              </h3>
             </div>
             <a
-              href="https://www.linkedin.com/in/acortescabrejas"
+              href={githubUrl}
               target="_blank"
               rel="noreferrer"
-              className="rounded-full border border-white/15 bg-white/[0.04] px-5 py-3 text-sm font-medium text-zinc-100 transition hover:border-white/30 hover:bg-white/[0.08]"
+              className="rounded-full bg-white px-5 py-3 text-sm font-medium text-slate-900 transition hover:bg-zinc-200"
             >
-              Connect on LinkedIn
+              View GitHub
             </a>
           </div>
         </div>

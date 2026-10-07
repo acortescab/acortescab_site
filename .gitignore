@@ -2,6 +2,7 @@
 .env
 .env.*
 Profile.pdf
+CV_Acortes_SE_nopic.pdf
 
 # Python virtual environment
 .venv/
@@ -32,6 +33,7 @@ pnpm-debug.log*
 
 # Local production assets
 public/Profile.pdf
+public/CV_Acortes_SE_nopic.pdf
 
 # Logs
 *.log
