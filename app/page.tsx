@@ -103,11 +103,11 @@ export default function Home() {
             </div>
 
             <h1 className="max-w-3xl text-5xl font-semibold tracking-[-0.06em] text-white sm:text-6xl lg:text-7xl">
-              Building product momentum with technical clarity.
+              Building software that ships, from gameplay to cloud.
             </h1>
 
             <p className="mt-6 max-w-xl text-lg leading-8 text-zinc-300">
-              I’m Alejandro Cortes Cabrejas — a technical leader and software engineer who turns complex product challenges into shipping systems, scalable platforms, and high-performing teams.
+              I’m Alejandro Cortes Cabrejas — a software engineer and technical leader who turns complex product challenges into shipping games, scalable backends, and reliable cloud infrastructure.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
@@ -144,14 +144,36 @@ export default function Home() {
                 <span>Available</span>
               </div>
 
+              <div className="relative mx-auto mb-6 h-40 w-40">
+                <div className="absolute -inset-3 rounded-full bg-gradient-to-br from-orange-500/40 to-blue-500/40 blur-xl" />
+                <div className="relative h-full w-full rounded-full bg-gradient-to-br from-orange-400 via-orange-300/40 to-blue-500 p-[3px]">
+                  <div className="relative h-full w-full overflow-hidden rounded-full bg-[#0d1320]">
+                    <Image
+                      src="/profile.jpg"
+                      alt="Alejandro Cortes Cabrejas"
+                      fill
+                      priority
+                      sizes="160px"
+                      className="object-cover contrast-110 saturate-90"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-orange-500/35 via-slate-700/45 to-blue-600/55 mix-blend-multiply" />
+                    <div className="absolute inset-0 rounded-full shadow-[inset_0_0_24px_rgba(7,11,18,0.7)]" />
+                  </div>
+                </div>
+              </div>
+
               <div className="rounded-[1.5rem] border border-white/10 bg-[#0d1320] p-5">
                 <div className="mb-5 flex items-center justify-between">
                   <div>
                     <p className="text-xs uppercase tracking-[0.22em] text-zinc-400">Role</p>
-                    <h2 className="mt-2 text-2xl font-semibold text-white">Tech Lead</h2>
+                    <h2 className="mt-2 text-2xl font-semibold leading-tight text-white">
+                      Tech Lead &amp;
+                      <br />
+                      Software Engineer
+                    </h2>
                   </div>
                   <div className="rounded-full border border-emerald-400/40 bg-emerald-500/10 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-emerald-300">
-                    Leading
+                    Hands-on
                   </div>
                 </div>
 
