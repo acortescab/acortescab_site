@@ -77,7 +77,12 @@ export async function POST(request: Request) {
   }
 
   const payload = {
-    model: "qwen/qwen3.8-27b:free",
+    // Free models, tried in order by OpenRouter if one is rate-limited or down.
+    models: [
+      "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "google/gemma-4-31b-it:free",
+      "nvidia/nemotron-3-super-120b-a12b:free",
+    ],
     messages: [
       { role: "system", content: systemPrompt },
       { role: "user", content: message },
@@ -143,14 +148,14 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({
-      reply: `${buildFallbackReply(message)} The OpenRouter free model is temporarily rate-limited, so this answer is based on Alejandro’s verified profile while the provider recovers.`,
+      reply: `${buildFallbackReply(message)} The AI model is temporarily unavailable, so this answer is based on Alejandro’s verified profile while the provider recovers.`,
       fallback: true,
-      warning: "OpenRouter is temporarily rate-limited for the shared free model.",
+      warning: "OpenRouter is temporarily unavailable or rate-limited.",
     });
   } catch (error) {
     const messageText = error instanceof Error ? error.message : "Unknown error";
     return NextResponse.json({
-      reply: `${buildFallbackReply(message)} OpenRouter is temporarily unavailable, so this is a profile-based answer until the shared model recovers.`,
+      reply: `${buildFallbackReply(message)} The AI model is temporarily unavailable, so this is a profile-based answer until it recovers.`,
       fallback: true,
       warning: messageText,
     });

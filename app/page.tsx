@@ -65,22 +65,13 @@ const initiatives = [
   },
 ];
 
-const portfolioHighlights = [
-  {
-    title: "Platform systems",
-    text: "Scalable APIs, cloud architecture, and internal tools that unlock product velocity.",
-  },
-  {
-    title: "Game delivery",
-    text: "Cross-platform launches built with technical discipline, stakeholder alignment, and execution clarity.",
-  },
-  {
-    title: "Technical leadership",
-    text: "Decision-making that balances roadmap reality, engineering standards, and delivery objectives.",
-  },
-];
+const shippedPlatforms = ["Steam", "Epic Games", "PS5", "PS4", "Xbox Series", "Xbox One", "iOS", "Android"];
+const githubUrl = "https://github.com/acortescab";
 
+import Image from "next/image";
+import Link from "next/link";
 import DigitalTwinChat from "./components/digital-twin-chat";
+import { gameImage, games } from "./data/games";
 
 export default function Home() {
   return (
@@ -112,11 +103,11 @@ export default function Home() {
             </div>
 
             <h1 className="max-w-3xl text-5xl font-semibold tracking-[-0.06em] text-white sm:text-6xl lg:text-7xl">
-              Building product momentum with technical clarity.
+              Building software that ships, from gameplay to cloud.
             </h1>
 
             <p className="mt-6 max-w-xl text-lg leading-8 text-zinc-300">
-              I’m Alejandro Cortes Cabrejas — a technical leader and software engineer who turns complex product challenges into shipping systems, scalable platforms, and high-performing teams.
+              I’m Alejandro Cortes Cabrejas — a software engineer and technical leader who turns complex product challenges into shipping games, scalable backends, and reliable cloud infrastructure.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
@@ -127,6 +118,14 @@ export default function Home() {
                 className="rounded-full bg-white px-6 py-3 text-sm font-medium text-slate-900 transition hover:bg-zinc-200"
               >
                 LinkedIn
+              </a>
+              <a
+                href={githubUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-medium text-zinc-100 transition hover:border-white/30 hover:bg-white/10"
+              >
+                GitHub
               </a>
               <a
                 href="#journey"
@@ -145,14 +144,36 @@ export default function Home() {
                 <span>Available</span>
               </div>
 
+              <div className="relative mx-auto mb-6 h-40 w-40">
+                <div className="absolute -inset-3 rounded-full bg-gradient-to-br from-orange-500/40 to-blue-500/40 blur-xl" />
+                <div className="relative h-full w-full rounded-full bg-gradient-to-br from-orange-400 via-orange-300/40 to-blue-500 p-[3px]">
+                  <div className="relative h-full w-full overflow-hidden rounded-full bg-[#0d1320]">
+                    <Image
+                      src="/profile.jpg"
+                      alt="Alejandro Cortes Cabrejas"
+                      fill
+                      priority
+                      sizes="160px"
+                      className="object-cover contrast-110 saturate-90"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-orange-500/35 via-slate-700/45 to-blue-600/55 mix-blend-multiply" />
+                    <div className="absolute inset-0 rounded-full shadow-[inset_0_0_24px_rgba(7,11,18,0.7)]" />
+                  </div>
+                </div>
+              </div>
+
               <div className="rounded-[1.5rem] border border-white/10 bg-[#0d1320] p-5">
                 <div className="mb-5 flex items-center justify-between">
                   <div>
                     <p className="text-xs uppercase tracking-[0.22em] text-zinc-400">Role</p>
-                    <h2 className="mt-2 text-2xl font-semibold text-white">Tech Lead</h2>
+                    <h2 className="mt-2 text-2xl font-semibold leading-tight text-white">
+                      Tech Lead &amp;
+                      <br />
+                      Software Engineer
+                    </h2>
                   </div>
                   <div className="rounded-full border border-emerald-400/40 bg-emerald-500/10 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-emerald-300">
-                    Leading
+                    Hands-on
                   </div>
                 </div>
 
@@ -250,29 +271,67 @@ export default function Home() {
           Portfolio
         </div>
 
+        <h2 className="mb-8 max-w-2xl text-3xl font-semibold tracking-[-0.05em] text-white md:text-4xl">
+          Games I’ve shipped.
+        </h2>
+
         <div className="mb-10 grid gap-5 md:grid-cols-3">
-          {portfolioHighlights.map((item) => (
-            <div key={item.title} className="rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-5">
-              <div className="mb-4 h-10 w-10 rounded-xl bg-gradient-to-br from-orange-400/30 to-blue-500/30" />
-              <h3 className="text-xl font-semibold text-white">{item.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-zinc-300">{item.text}</p>
-            </div>
-          ))}
+          {games.map((game) => {
+            const image = gameImage(game.slug);
+            return (
+              <Link
+                key={game.slug}
+                href={`/games/${game.slug}`}
+                className="group flex flex-col overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.03] transition hover:-translate-y-1 hover:border-white/25"
+              >
+                <div className={`relative flex h-44 items-end bg-gradient-to-br ${game.accent} p-5`}>
+                  {image && (
+                    <>
+                      <Image
+                        src={image}
+                        alt={game.title}
+                        fill
+                        sizes="(min-width: 768px) 33vw, 100vw"
+                        className="object-cover transition duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#070b12]/80 via-transparent to-transparent" />
+                    </>
+                  )}
+                  <h3 className="relative text-2xl font-semibold tracking-[-0.03em] text-white">{game.title}</h3>
+                </div>
+                <div className="flex flex-1 flex-col p-5">
+                  <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-zinc-400">
+                    {game.period} • {game.role}
+                  </p>
+                  <p className="mt-3 flex-1 text-sm leading-7 text-zinc-300">{game.summary}</p>
+                  <span className="mt-5 text-sm font-medium text-orange-300 transition group-hover:text-orange-200">
+                    View game →
+                  </span>
+                </div>
+              </Link>
+            );
+          })}
         </div>
 
-        <div className="rounded-[2rem] border border-dashed border-white/15 bg-gradient-to-br from-white/[0.04] to-transparent p-7 md:p-10">
+        <p className="mb-10 text-sm leading-7 text-zinc-400">
+          Projects delivered across {shippedPlatforms.join(", ")} using Unity Engine and C#.
+        </p>
+
+        <div className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-white/[0.04] to-transparent p-7 md:p-10">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="text-xs font-medium uppercase tracking-[0.26em] text-zinc-400">Future work</p>
-              <h3 className="mt-2 text-3xl font-semibold tracking-[-0.05em] text-white">Portfolio cases coming soon.</h3>
+              <p className="text-xs font-medium uppercase tracking-[0.26em] text-zinc-400">Open work</p>
+              <h3 className="mt-2 text-3xl font-semibold tracking-[-0.05em] text-white">
+                More of what I’m building lives on GitHub.
+              </h3>
             </div>
             <a
-              href="https://www.linkedin.com/in/acortescabrejas"
+              href={githubUrl}
               target="_blank"
               rel="noreferrer"
-              className="rounded-full border border-white/15 bg-white/[0.04] px-5 py-3 text-sm font-medium text-zinc-100 transition hover:border-white/30 hover:bg-white/[0.08]"
+              className="rounded-full bg-white px-5 py-3 text-sm font-medium text-slate-900 transition hover:bg-zinc-200"
             >
-              Connect on LinkedIn
+              View GitHub
             </a>
           </div>
         </div>
