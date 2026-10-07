@@ -1,4 +1,7 @@
 import { NextResponse } from "next/server";
+import { checkRateLimit, getClientIp } from "./rate-limit";
+
+const MAX_MESSAGE_LENGTH = 500;
 
 const systemPrompt = `You are the Digital Twin of Alejandro Cortes Cabrejas, a tech lead and software engineer based in Barcelona.
 
@@ -58,12 +61,27 @@ function buildFallbackReply(question: string) {
 }
 
 export async function POST(request: Request) {
+  const retryAfter = checkRateLimit(getClientIp(request));
+  if (retryAfter > 0) {
+    return NextResponse.json(
+      { error: "You're sending messages too quickly. Please wait a few minutes and try again." },
+      { status: 429, headers: { "Retry-After": String(retryAfter) } },
+    );
+  }
+
   const body = await request.json().catch(() => null);
   const message = typeof body?.message === "string" ? body.message.trim() : "";
 
   if (!message) {
     return NextResponse.json(
       { error: "A message is required." },
+      { status: 400 },
+    );
+  }
+
+  if (message.length > MAX_MESSAGE_LENGTH) {
+    return NextResponse.json(
+      { error: `Messages are limited to ${MAX_MESSAGE_LENGTH} characters.` },
       { status: 400 },
     );
   }

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { gameImage, games, getGame, youtubeId } from "../../data/games";
+import { games, getGame, youtubeId } from "../../data/games";
 
 export function generateStaticParams() {
   return games.map((game) => ({ slug: game.slug }));
@@ -23,7 +23,6 @@ export default async function GamePage({ params }: PageProps<"/games/[slug]">) {
   const game = getGame(slug);
   if (!game) notFound();
 
-  const image = gameImage(game.slug);
   const videoId = youtubeId(game.trailerUrl);
 
   return (
@@ -48,7 +47,7 @@ export default async function GamePage({ params }: PageProps<"/games/[slug]">) {
           </div>
         ) : (
           <div className={`relative mt-6 h-64 overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br ${game.accent} md:h-96`}>
-            {image && <Image src={image} alt={game.title} fill priority sizes="(min-width: 1024px) 1024px, 100vw" className="object-cover" />}
+            <Image src={game.image} alt={game.title} fill priority sizes="(min-width: 1024px) 1024px, 100vw" className="object-cover" />
           </div>
         )}
 

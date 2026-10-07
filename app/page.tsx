@@ -71,7 +71,7 @@ const githubUrl = "https://github.com/acortescab";
 import Image from "next/image";
 import Link from "next/link";
 import DigitalTwinChat from "./components/digital-twin-chat";
-import { gameImage, games } from "./data/games";
+import { games } from "./data/games";
 
 export default function Home() {
   return (
@@ -277,7 +277,6 @@ export default function Home() {
 
         <div className="mb-10 grid gap-5 md:grid-cols-3">
           {games.map((game) => {
-            const image = gameImage(game.slug);
             return (
               <Link
                 key={game.slug}
@@ -285,18 +284,14 @@ export default function Home() {
                 className="group flex flex-col overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.03] transition hover:-translate-y-1 hover:border-white/25"
               >
                 <div className={`relative flex h-44 items-end bg-gradient-to-br ${game.accent} p-5`}>
-                  {image && (
-                    <>
-                      <Image
-                        src={image}
-                        alt={game.title}
-                        fill
-                        sizes="(min-width: 768px) 33vw, 100vw"
-                        className="object-cover transition duration-500 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#070b12]/80 via-transparent to-transparent" />
-                    </>
-                  )}
+                  <Image
+                    src={game.image}
+                    alt={game.title}
+                    fill
+                    sizes="(min-width: 768px) 33vw, 100vw"
+                    className="object-cover transition duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#070b12]/80 via-transparent to-transparent" />
                   <h3 className="relative text-2xl font-semibold tracking-[-0.03em] text-white">{game.title}</h3>
                 </div>
                 <div className="flex flex-1 flex-col p-5">

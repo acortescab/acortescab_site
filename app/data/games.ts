@@ -1,7 +1,4 @@
-import fs from "node:fs";
-import path from "node:path";
-
-export type Game = {
+type GameData = {
   slug: string;
   title: string;
   role: string;
@@ -17,13 +14,16 @@ export type Game = {
   accent: string;
 };
 
+/** A game plus its cover, served from `public/games/<slug>.jpg`. */
+export type Game = GameData & { image: string };
+
 const petoonsContribution = (focus: string) => [
   focus,
   "Worked closely with design, art and production teams as a Unity Software Engineer using C#.",
   "Designed internal and editor tools in Python, C# and Bash to improve development workflows.",
 ];
 
-export const games: Game[] = [
+const gameData: GameData[] = [
   {
     slug: "curse-of-the-sea-rats",
     title: "Curse of the Sea Rats",
@@ -234,6 +234,11 @@ export const games: Game[] = [
   },
 ];
 
+export const games: Game[] = gameData.map((game) => ({
+  ...game,
+  image: `/games/${game.slug}.jpg`,
+}));
+
 export function getGame(slug: string) {
   return games.find((game) => game.slug === slug);
 }
@@ -251,15 +256,5 @@ export function youtubeId(url?: string) {
       return match ? match[1] : null;
     }
   } catch {}
-  return null;
-}
-
-/** Public path of `public/games/<slug>.(jpg|png|webp)` if one has been added. */
-export function gameImage(slug: string) {
-  for (const ext of ["jpg", "jpeg", "png", "webp"]) {
-    if (fs.existsSync(path.join(process.cwd(), "public", "games", `${slug}.${ext}`))) {
-      return `/games/${slug}.${ext}`;
-    }
-  }
   return null;
 }
