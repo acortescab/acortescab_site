@@ -28,7 +28,7 @@ const gameData: GameData[] = [
     slug: "curse-of-the-sea-rats",
     title: "Curse of the Sea Rats",
     role: "Tech Lead",
-    period: "2020 — 2026",
+    period: "2019 — 2023",
     summary:
       "A hand-drawn, animated metroidvania where a crew of cursed rats fights through a pirate-era adventure.",
     about: [
@@ -48,7 +48,7 @@ const gameData: GameData[] = [
     slug: "hot-wheels-xtreme-overdrive",
     title: "Hot Wheels: Xtreme Overdrive",
     role: "Tech Lead",
-    period: "2020 — 2026",
+    period: "2024 — 2025",
     summary: "A Hot Wheels game for Android and AirConsole, built in Unity.",
     about: [
       "Hot Wheels: Xtreme Overdrive is a Hot Wheels game developed by Petoons Studio with Unity Engine for Android and AirConsole.",
@@ -67,7 +67,7 @@ const gameData: GameData[] = [
     slug: "monster-high-skulltimate-secrets",
     title: "Monster High: Skulltimate Secrets",
     role: "Tech Lead",
-    period: "2020 — 2026",
+    period: "2023 — 2024",
     summary:
       "A 3D platformer set at Monster High, with a fully customizable monster student.",
     about: [
@@ -88,7 +88,7 @@ const gameData: GameData[] = [
     slug: "bratz-flaunt-your-fashion",
     title: "Bratz: Flaunt Your Fashion",
     role: "Tech Lead",
-    period: "2020 — 2026",
+    period: "2021 — 2023",
     summary:
       "The first new Bratz game for consoles and PC in over a decade: a globe-trotting fashion adventure.",
     about: [
@@ -108,7 +108,7 @@ const gameData: GameData[] = [
     slug: "dracamar",
     title: "Dracamar",
     role: "Tech Lead",
-    period: "2020 — 2026",
+    period: "2024 — 2026",
     summary:
       "A colorful 3D platformer inspired by late-90s and early-2000s classics, set on Mediterranean islands.",
     about: [
@@ -129,7 +129,7 @@ const gameData: GameData[] = [
     slug: "pj-masks-heroes-of-the-night",
     title: "PJ Masks: Heroes of the Night",
     role: "Tech Lead",
-    period: "2020 — 2026",
+    period: "2020 — 2022",
     summary: "The first console game based on the animated pre-school series.",
     about: [
       "Released in October 2021, PJ Masks: Heroes of the Night is a 3D platforming adventure in which players become the PJ Masks to save the world from night-time baddies such as Romeo, Luna Girl and Night Ninja. Players use Catboy's speed, Owlette's flying and Gekko's muscles across eight locations, from Mystery Mountain to the Moon, with vehicles like the Cat-Car, Gekko-Mobile and Owl-Glider.",
@@ -148,7 +148,7 @@ const gameData: GameData[] = [
     slug: "pj-masks-power-heroes-mighty-alliance",
     title: "PJ Masks Power Heroes: Mighty Alliance",
     role: "Tech Lead",
-    period: "2020 — 2026",
+    period: "2022 — 2024",
     summary: "A side-scrolling PJ Masks Power Heroes adventure with eight playable heroes.",
     about: [
       "Released in March 2024, PJ Masks Power Heroes: Mighty Alliance is a single-player, side-scrolling adventure set in the colorful world of PJ Masks: Power Heroes. Players complete missions and solve puzzles with each hero's special abilities, avoid obstacles left by the villains, and face the main baddies in boss battles.",
@@ -167,7 +167,7 @@ const gameData: GameData[] = [
     slug: "my-friend-peppa-pig",
     title: "My Friend Peppa Pig",
     role: "Tech Lead",
-    period: "2020 — 2026",
+    period: "2020 — 2022",
     summary: "Create your own character and join Peppa and her family on an adventure.",
     about: [
       "Released in October 2021, My Friend Peppa Pig lets players create and dress their own character, ring Peppa's doorbell and start a story that is up to them, with Peppa suggesting activities everywhere: helping Daddy Pig find his glasses, following animal tracks in the forest, splashing in muddy puddles, and more.",
@@ -186,7 +186,7 @@ const gameData: GameData[] = [
     slug: "peppa-pig-world-adventures",
     title: "Peppa Pig: World Adventures",
     role: "Tech Lead",
-    period: "2020 — 2026",
+    period: "2021 — 2023",
     summary: "A Peppa Pig adventure that takes the family around the world.",
     about: [
       "Released in March 2023, Peppa Pig: World Adventures sends players to explore Italy, Germany, Spain, Hollywood and more, completing quests and collecting postcards along the way. They can fly to Australia, explore the ocean in a submarine, ride a yellow taxi through New York City and visit sights such as the Eiffel Tower and Buckingham Palace.",
@@ -204,7 +204,7 @@ const gameData: GameData[] = [
     slug: "petoons-party",
     title: "Petoons Party",
     role: "Unity Software Engineer",
-    period: "2017 — 2020",
+    period: "2017 — 2019",
     summary:
       "A party game of mini-games for up to four players, and the studio's jump from mobile to PC and console.",
     about: [
@@ -222,7 +222,7 @@ const gameData: GameData[] = [
     slug: "petoons-world",
     title: "Petoons World",
     role: "Unity Software Engineer",
-    period: "2017 — 2020",
+    period: "2017 — 2019",
     summary: "An iOS mobile game from the Petoons universe.",
     about: ["Petoons World is an iOS mobile game from Petoons Studio."],
     contribution: petoonsContribution(

@@ -246,7 +246,7 @@ export default function Home() {
         </div>
 
         <div className="relative grid gap-6">
-          <div className="absolute left-5 top-2 bottom-2 w-px bg-gradient-to-b from-orange-500/70 via-blue-500/50 to-transparent md:left-7" />
+          <div className="absolute left-5 top-2 bottom-2 hidden w-px bg-gradient-to-b from-orange-500/70 via-blue-500/50 to-transparent md:left-7 md:block" />
           {timeline.map((item) => (
             <article key={item.period} className="relative rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-5 md:ml-12 md:p-7">
               <div className="absolute left-[-2.3rem] top-7 hidden h-4 w-4 rounded-full border-4 border-[#070b12] bg-gradient-to-br from-orange-400 to-blue-500 md:block" />
